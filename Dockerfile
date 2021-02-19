@@ -98,14 +98,16 @@ RUN gem install fastlane -NV -v "$FASTLANE_VERSION"
 # Install command line tools
 RUN mkdir -p ${ANDROID_SDK_ROOT}/cmdline-tools && \
     wget -q https://dl.google.com/android/repository/commandlinetools-linux-${ANDROID_SDK_TOOLS}_latest.zip && \
-    unzip *tools*linux*.zip -d ${ANDROID_SDK_ROOT}/cmdline-tools && \
+    unzip *tools*linux*.zip -d ${ANDROID_SDK_ROOT}/downloads && \
+    mkdir ${ANDROID_SDK_ROOT}/cmdline-tools/latest && \
+    mv ${ANDROID_SDK_ROOT}/downloads/cmdline-tools/* ${ANDROID_SDK_ROOT}/cmdline-tools/latest && \
     rm *tools*linux*.zip
 
 
 # set the environment variables
 ENV GRADLE_HOME /opt/gradle
 ENV KOTLIN_HOME /opt/kotlinc
-ENV PATH ${PATH}:${GRADLE_HOME}/bin:${KOTLIN_HOME}/bin:${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin:${ANDROID_SDK_ROOT}/cmdline-tools/tools/bin:${ANDROID_SDK_ROOT}/platform-tools:${ANDROID_SDK_ROOT}/emulator
+ENV PATH ${PATH}:${GRADLE_HOME}/bin:${KOTLIN_HOME}/bin:${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin:${ANDROID_SDK_ROOT}/cmdline-tools/bin:${ANDROID_SDK_ROOT}/platform-tools:${ANDROID_SDK_ROOT}/emulator
 
 
 # WORKAROUND: for issue https://issuetracker.google.com/issues/37137213
