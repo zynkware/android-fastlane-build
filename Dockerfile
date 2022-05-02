@@ -6,7 +6,7 @@ CMD ["/sbin/my_init"]
 ## Set up Android related environment vars
 
 ENV ANDROID_COMPILE_SDK="31"
-ENV ANDROID_BUILD_TOOLS="31.0.3"
+ENV ANDROID_BUILD_TOOLS="32.0.0"
 ENV ANDROID_SDK_TOOLS="8092744"
 
 ARG GRADLE_VERSION=6.8.2
@@ -48,7 +48,7 @@ RUN cd /opt && \
 
 # Install openjdk-8-jdk 
 RUN apt-get update \
-    && apt-get install -y openjdk-8-jdk \
+    && apt-get install -y openjdk-11-jdk-headless \
     && apt-get autoremove -y \
     && apt-get clean
 

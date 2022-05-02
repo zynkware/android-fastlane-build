@@ -5,7 +5,7 @@ wget
 libc6-i386
 lib32stdc++6
 lib32gcc1
-lib32ncurses5
+lib32ncurses6
 lib32z1
 python
 make
@@ -18,7 +18,7 @@ gcc
 imagemagick
 libbz2-dev
 libc6-dev
-libcurl3
+libcurl4
 libdb-dev
 libevent-dev
 libffi-dev
